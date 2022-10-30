@@ -1,0 +1,8 @@
+# ignored because firewall service is disabled
+
+config defaults
+	option input 'ACCEPT'
+	option output 'ACCEPT'
+	option forward 'REJECT'
+	option synflood_protect '1'
+

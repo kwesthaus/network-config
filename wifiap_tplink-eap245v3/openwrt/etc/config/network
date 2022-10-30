@@ -1,0 +1,67 @@
+
+config interface 'loopback'
+	option device 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+	option ula_prefix 'fd4c:a01e:4723::/48'
+
+
+config switch
+	option name 'switch0'
+	option reset '1'
+	option enable_vlan '1'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '2'
+	option vid '10'
+	option ports '0t 2t'
+	option description 'trusted'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '3'
+	option vid '11'
+	option ports '0t 2t'
+	option description 'guest'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '4'
+	option vid '12'
+	option ports '0t 2t'
+	option description 'iot'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '5'
+	option vid '14'
+	option ports '0t 2t 5'
+	option description 'infra'
+
+
+config interface 'trusted'
+	option proto 'none'
+	option device 'eth0.10'
+	option type 'bridge'
+
+config interface 'guest'
+	option proto 'none'
+	option device 'eth0.11'
+	option type 'bridge'
+
+config interface 'iot'
+	option proto 'none'
+	option device 'eth0.12'
+	option type 'bridge'
+
+config interface 'infra'
+	option proto 'static'
+	option ipaddr '192.168.14.31'
+	option netmask '255.255.255.0'
+	option gateway '192.168.14.1'
+	option device 'eth0.14'
+
