@@ -43,19 +43,35 @@ config switch_vlan
 	option description 'vl_infra'
 
 
+config device
+	option type 'bridge'
+	option name 'br_trusted'
+	list ports 'eth0.10'
+
+config device
+	option type 'bridge'
+	option name 'br_guest'
+	list ports 'eth0.11'
+
+config device
+	option type 'bridge'
+	option name 'br_iot'
+	list ports 'eth0.12'
+
+
 config interface 'in_trusted'
 	option proto 'none'
-	option device 'eth0.10'
+	option device 'br_trusted'
 	option type 'bridge'
 
 config interface 'in_guest'
 	option proto 'none'
-	option device 'eth0.11'
+	option device 'br_guest'
 	option type 'bridge'
 
 config interface 'in_iot'
 	option proto 'none'
-	option device 'eth0.12'
+	option device 'br_iot'
 	option type 'bridge'
 
 config interface 'in_infra'
