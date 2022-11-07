@@ -19,46 +19,46 @@ config switch_vlan
 	option vlan '2'
 	option vid '10'
 	option ports '0t 2t'
-	option description 'trusted'
+	option description 'vl_trusted'
 
 config switch_vlan
 	option device 'switch0'
 	option vlan '3'
 	option vid '11'
 	option ports '0t 2t'
-	option description 'guest'
+	option description 'vl_guest'
 
 config switch_vlan
 	option device 'switch0'
 	option vlan '4'
 	option vid '12'
 	option ports '0t 2t'
-	option description 'iot'
+	option description 'vl_iot'
 
 config switch_vlan
 	option device 'switch0'
 	option vlan '5'
 	option vid '14'
 	option ports '0t 2t 5'
-	option description 'infra'
+	option description 'vl_infra'
 
 
-config interface 'trusted'
+config interface 'in_trusted'
 	option proto 'none'
 	option device 'eth0.10'
 	option type 'bridge'
 
-config interface 'guest'
+config interface 'in_guest'
 	option proto 'none'
 	option device 'eth0.11'
 	option type 'bridge'
 
-config interface 'iot'
+config interface 'in_iot'
 	option proto 'none'
 	option device 'eth0.12'
 	option type 'bridge'
 
-config interface 'infra'
+config interface 'in_infra'
 	option proto 'static'
 	option ipaddr '192.168.14.31'
 	option netmask '255.255.255.0'
