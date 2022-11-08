@@ -226,11 +226,3 @@ config rule
 	option dest_port '53'
 	option target 'ACCEPT'
 
-config rule
-	option name 'Allow-infra-DHCP'
-	list proto 'udp'
-	option src_port '68'
-	option dest_port '67'
-	option target 'ACCEPT'
-	option src 'infra'
-
