@@ -9,6 +9,8 @@ config globals 'globals'
 	option ula_prefix 'fd4c:a01e:4723::/48'
 
 
+## SWCONFIG HARDWARE SWITCH VLANS
+
 config switch
 	option name 'switch0'
 	option reset '1'
@@ -43,6 +45,8 @@ config switch_vlan
 	option description 'vl_infra'
 
 
+## ETH-WLAN BRIDGE DEVICES
+
 config device
 	option type 'bridge'
 	option name 'br_trusted'
@@ -58,6 +62,8 @@ config device
 	option name 'br_iot'
 	list ports 'eth0.12'
 
+
+## INTERFACES
 
 config interface 'in_trusted'
 	option proto 'none'
