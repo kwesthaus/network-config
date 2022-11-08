@@ -8,16 +8,8 @@ config interface 'loopback'
 config globals 'globals'
 	option ula_prefix 'fdde:5b23:aae5::/48'
 
-config device
-	option name 'eth1'
-	option macaddr 'da:80:39:d1:bd:b4'
 
-# config interface 'lan'
-# 	option proto 'static'
-# 	option ipaddr '192.168.1.1'
-# 	option netmask '255.255.255.0'
-# 	option ip6assign '60'
-# 	option device 'eth1'
+## WAN
 
 config device
 	option name 'eth0'
@@ -30,6 +22,22 @@ config interface 'wan'
 config interface 'wan6'
 	option device 'eth0'
 	option proto 'dhcpv6'
+
+
+## LAN
+
+config device
+	option name 'eth1'
+	option macaddr 'da:80:39:d1:bd:b4'
+
+# config interface 'lan'
+# 	option proto 'static'
+# 	option ipaddr '192.168.1.1'
+# 	option netmask '255.255.255.0'
+# 	option ip6assign '60'
+# 	option device 'eth1'
+
+# DRIVER-LEVEL VLANS
 
 config device
 	option type '8021q'
@@ -60,6 +68,8 @@ config device
 	option ifname 'eth1'
 	option vid '14'
 	option name 'eth1.14'
+
+# INTERFACES
 
 config interface 'trusted'
 	option proto 'static'
