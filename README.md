@@ -3,6 +3,10 @@ Configuration files for the equipment which runs my home network
 
 ## Diagrams
 
+### Network Layout
+
+![Network layout diagram](home-network.drawio.png)
+
 ### Subnet Features
 
 | Subnet    | VLAN ID       | DHCP  | DNS   | WIFI  | INPUT | OUTPUT    | FORWARD   |
