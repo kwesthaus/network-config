@@ -14,3 +14,16 @@ Configuration files for the equipment which runs my home network
 | DMZ       | 13            | ✅    | ✅    | ❌    | ❌    | ✅        | ❌        |
 | Infra     | 14            | ❌    | ❌    | ❌    | ❌    | ✅        | ❌        |
 
+### Subnet Forwarding
+
+(from row to column)
+
+| Subnet    | WAN   | Trusted   | Guest | IoT   | DMZ   | Infra |
+| --------- | ----- | --------- | ----- | ----- | ----- | ----- |
+| WAN       | ✅    | ❌        | ❌    | ❌    | ❌    | ❌    |
+| Trusted   | ✅    | ✅        | ✅    | ✅    | ✅    | ✅    |
+| Guest     | ✅    | ❌        | ✅    | ❌    | ❌    | ❌    |
+| IoT       | ❌    | ❌        | ❌    | ✅    | ❌    | ❌    |
+| DMZ       | ✅    | ❌        | ❌    | ❌    | ✅    | ❌    |
+| Infra     | ❌    | ❌        | ❌    | ❌    | ❌    | ✅    |
+
