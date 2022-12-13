@@ -91,6 +91,10 @@ config forwarding
 	option src 'dmz'
 	option dest 'wan'
 
+# config forwarding
+# 	option src 'infra'
+# 	option dest 'wan'
+
 
 ## DEFAULT RULES
 
@@ -225,4 +229,10 @@ config rule
 	option src 'dmz'
 	option dest_port '53'
 	option target 'ACCEPT'
+
+# config rule
+# 	option name 'Allow-infra-DNS'
+# 	option src 'infra'
+# 	option dest_port '53'
+# 	option target 'ACCEPT'
 
