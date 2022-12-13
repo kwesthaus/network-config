@@ -16,9 +16,9 @@ config defaults
 # 	option forward 'ACCEPT'
 
 config zone
-	option name 'wan'
-	list network 'wan'
-	list network 'wan6'
+	option name 'zn_wan'
+	list network 'in_wan'
+	list network 'in_wan6'
 	option input 'REJECT'
 	option output 'ACCEPT'
 	option forward 'REJECT'
@@ -26,81 +26,81 @@ config zone
 	option mtu_fix '1'
 
 config zone
-	option name 'trusted'
+	option name 'zn_trusted'
 	option input 'ACCEPT'
 	option output 'ACCEPT'
 	option forward 'REJECT'
-	list network 'trusted'
+	list network 'in_trusted'
 
 config zone
-	option name 'guest'
+	option name 'zn_guest'
 	option input 'REJECT'
 	option output 'ACCEPT'
 	option forward 'REJECT'
-	list network 'guest'
+	list network 'in_guest'
 
 config zone
-	option name 'iot'
+	option name 'zn_iot'
 	option input 'REJECT'
 	option output 'ACCEPT'
 	option forward 'REJECT'
-	list network 'iot'
+	list network 'in_iot'
 
 config zone
-	option name 'dmz'
+	option name 'zn_dmz'
 	option input 'REJECT'
 	option output 'ACCEPT'
 	option forward 'REJECT'
-	list network 'dmz'
+	list network 'in_dmz'
 
 config zone
-	option name 'infra'
+	option name 'zn_infra'
 	option input 'REJECT'
 	option output 'ACCEPT'
 	option forward 'REJECT'
-	list network 'infra'
+	list network 'in_infra'
 
 
 ## FORWARDING
 
 config forwarding
-	option src 'trusted'
-	option dest 'wan'
+	option src 'zn_trusted'
+	option dest 'zn_wan'
 
 config forwarding
-	option src 'trusted'
-	option dest 'guest'
+	option src 'zn_trusted'
+	option dest 'zn_guest'
 
 config forwarding
-	option src 'trusted'
-	option dest 'iot'
+	option src 'zn_trusted'
+	option dest 'zn_iot'
 
 config forwarding
-	option src 'trusted'
-	option dest 'dmz'
+	option src 'zn_trusted'
+	option dest 'zn_dmz'
 
 config forwarding
-	option src 'trusted'
-	option dest 'infra'
+	option src 'zn_trusted'
+	option dest 'zn_infra'
 
 config forwarding
-	option src 'guest'
-	option dest 'wan'
+	option src 'zn_guest'
+	option dest 'zn_wan'
 
 config forwarding
-	option src 'dmz'
-	option dest 'wan'
+	option src 'zn_dmz'
+	option dest 'zn_wan'
 
 # config forwarding
-# 	option src 'infra'
-# 	option dest 'wan'
+# 	option src 'zn_infra'
+# 	option dest 'zn_wan'
 
 
 ## DEFAULT RULES
 
 config rule
 	option name 'Allow-DHCP-Renew'
-	option src 'wan'
+	option src 'zn_wan'
 	option proto 'udp'
 	option dest_port '68'
 	option target 'ACCEPT'
@@ -108,7 +108,7 @@ config rule
 
 config rule
 	option name 'Allow-Ping'
-	option src 'wan'
+	option src 'zn_wan'
 	option proto 'icmp'
 	option icmp_type 'echo-request'
 	option family 'ipv4'
@@ -116,14 +116,14 @@ config rule
 
 config rule
 	option name 'Allow-IGMP'
-	option src 'wan'
+	option src 'zn_wan'
 	option proto 'igmp'
 	option family 'ipv4'
 	option target 'ACCEPT'
 
 config rule
 	option name 'Allow-DHCPv6'
-	option src 'wan'
+	option src 'zn_wan'
 	option proto 'udp'
 	option dest_port '546'
 	option family 'ipv6'
@@ -131,7 +131,7 @@ config rule
 
 config rule
 	option name 'Allow-MLD'
-	option src 'wan'
+	option src 'zn_wan'
 	option proto 'icmp'
 	option src_ip 'fe80::/10'
 	list icmp_type '130/0'
@@ -143,7 +143,7 @@ config rule
 
 config rule
 	option name 'Allow-ICMPv6-Input'
-	option src 'wan'
+	option src 'zn_wan'
 	option proto 'icmp'
 	list icmp_type 'echo-request'
 	list icmp_type 'echo-reply'
@@ -162,7 +162,7 @@ config rule
 
 config rule
 	option name 'Allow-ICMPv6-Forward'
-	option src 'wan'
+	option src 'zn_wan'
 	option dest '*'
 	option proto 'icmp'
 	list icmp_type 'echo-request'
@@ -178,14 +178,14 @@ config rule
 
 # config rule
 # 	option name 'Allow-IPSec-ESP'
-# 	option src 'wan'
+# 	option src 'zn_wan'
 # 	option dest 'lan'
 # 	option proto 'esp'
 # 	option target 'ACCEPT'
 # 
 # config rule
 # 	option name 'Allow-ISAKMP'
-# 	option src 'wan'
+# 	option src 'zn_wan'
 # 	option dest 'lan'
 # 	option dest_port '500'
 # 	option proto 'udp'
@@ -196,14 +196,14 @@ config rule
 
 config rule
 	option name 'Allow-guest-DNS'
-	option src 'guest'
+	option src 'zn_guest'
 	option dest_port '53'
 	option target 'ACCEPT'
 
 config rule
 	option name 'Allow-guest-DHCP'
 	list proto 'udp'
-	option src 'guest'
+	option src 'zn_guest'
 	option src_port '68'
 	option dest_port '67'
 	option target 'ACCEPT'
@@ -211,7 +211,7 @@ config rule
 config rule
 	option name 'Allow-iot-DHCP'
 	list proto 'udp'
-	option src 'iot'
+	option src 'zn_iot'
 	option src_port '68'
 	option dest_port '67'
 	option target 'ACCEPT'
@@ -219,20 +219,20 @@ config rule
 config rule
 	option name 'Allow-dmz-DHCP'
 	list proto 'udp'
-	option src 'dmz'
+	option src 'zn_dmz'
 	option src_port '68'
 	option dest_port '67'
 	option target 'ACCEPT'
 
 config rule
 	option name 'Allow-dmz-DNS'
-	option src 'dmz'
+	option src 'zn_dmz'
 	option dest_port '53'
 	option target 'ACCEPT'
 
 # config rule
 # 	option name 'Allow-infra-DNS'
-# 	option src 'infra'
+# 	option src 'zn_infra'
 # 	option dest_port '53'
 # 	option target 'ACCEPT'
 
