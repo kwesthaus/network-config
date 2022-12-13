@@ -85,5 +85,6 @@ config interface 'in_infra'
 	option ipaddr '192.168.14.31'
 	option netmask '255.255.255.0'
 	option gateway '192.168.14.1'
+	option dns '192.168.14.1'
 	option device 'eth0.14'
 
