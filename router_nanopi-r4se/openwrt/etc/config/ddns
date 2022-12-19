@@ -1,32 +1,22 @@
-#
-# Please read https://openwrt.org/docs/guide-user/base-system/ddns
-#
-config ddns "global"
-	option ddns_dateformat "%F %R"
-#	option ddns_rundir "/var/run/ddns"
-#	option ddns_logdir "/var/log/ddns"
-	option ddns_loglines "250"
-	option upd_privateip "0"
 
+config ddns 'global'
+	option ddns_dateformat '%F %R'
+	option ddns_loglines '250'
+	option ddns_rundir '/var/run/ddns'
+	option ddns_logdir '/var/log/ddns'
 
-config service "myddns_ipv4"
-	option service_name	"dyndns.org"
-	option lookup_host	"yourhost.example.com"
-	option domain		"yourhost.example.com"
-	option username		"your_username"
-	option password		"your_password"
-	option interface	"wan"
-	option ip_source	"network"
-	option ip_network	"wan"
-
-config service "myddns_ipv6"
-	option update_url	"http://[USERNAME]:[PASSWORD]@your.provider.net/nic/update?hostname=[DOMAIN]&myip=[IP]"
-	option lookup_host	"yourhost.example.com"
-	option domain		"yourhost.example.com"
-	option username		"your_username"
-	option password		"your_password"
-	option use_ipv6		"1"
-	option interface	"wan6"
-	option ip_source	"network"
-	option ip_network	"wan6"
+config service 'kylewesthaus'
+	option enabled '1'
+	option interface 'in_wan'
+	option service_name 'namecheap.com'
+	option lookup_host 'kylewesthaus.com'
+	option domain 'kylewesthaus.com'
+	option username '@'
+	option password '<REDACTED>'
+	option use_ipv6 '0'
+	option ip_source 'network'
+	option ip_network 'in_wan'
+	option use_https '1'
+	option cacert '/etc/ssl/certs'
+	option use_syslog '2'
 
