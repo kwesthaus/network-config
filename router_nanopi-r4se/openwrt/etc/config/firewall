@@ -60,6 +60,13 @@ config zone
 	option forward 'REJECT'
 	list network 'in_infra'
 
+config zone
+	option name 'zn_wg'
+	option input 'ACCEPT'
+	option output 'ACCEPT'
+	option forward 'REJECT'
+	list network 'in_wg'
+
 
 ## FORWARDING
 
@@ -84,6 +91,11 @@ config forwarding
 	option dest 'zn_infra'
 
 config forwarding
+	option src 'zn_trusted'
+	option dest 'zn_wg'
+
+
+config forwarding
 	option src 'zn_guest'
 	option dest 'zn_wan'
 
@@ -94,6 +106,27 @@ config forwarding
 # config forwarding
 # 	option src 'zn_infra'
 # 	option dest 'zn_wan'
+
+
+config forwarding
+	option src 'zn_wg'
+	option dest 'zn_trusted'
+
+config forwarding
+	option src 'zn_wg'
+	option dest 'zn_guest'
+
+config forwarding
+	option src 'zn_wg'
+	option dest 'zn_iot'
+
+config forwarding
+	option src 'zn_wg'
+	option dest 'zn_dmz'
+
+config forwarding
+	option src 'zn_wg'
+	option dest 'zn_infra'
 
 
 ## DEFAULT RULES
@@ -235,4 +268,11 @@ config rule
 # 	option src 'zn_infra'
 # 	option dest_port '53'
 # 	option target 'ACCEPT'
+
+config rule
+	option name 'Allow-WireGuard'
+	list proto 'udp'
+	option src 'zn_wan'
+	option dest_port '51820'
+	option target 'ACCEPT'
 
