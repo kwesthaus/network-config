@@ -180,10 +180,11 @@ config statistics 'collectd_openvpn'
 	option enable '0'
 
 config statistics 'collectd_ping'
-	option enable '0'
+	option enable '1'
 	option TTL '127'
 	option Interval '30'
-	option Hosts '127.0.0.1'
+	# google (public) DNS, xfinity (my ISP) DNS, first router from traceroute with stable rDNS, cable modem
+	option Hosts '8.8.4.4 75.75.76.76 po-200-xar02.bellevue.wa.seattle.comcast.net 10.0.0.1'
 
 config statistics 'collectd_processes'
 	option enable '0'
