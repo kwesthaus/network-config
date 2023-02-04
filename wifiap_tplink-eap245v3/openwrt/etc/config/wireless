@@ -28,7 +28,7 @@ config wifi-iface 'wifinet1'
 	option network 'in_trusted'
 
 config wifi-iface 'wifinet2'
-	option device 'radio0'
+	option device 'radio1'
 	option mode 'ap'
 	option ssid 'HackerFi-Guest'
 	option encryption 'sae'
