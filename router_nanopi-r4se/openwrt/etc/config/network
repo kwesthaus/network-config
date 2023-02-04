@@ -111,7 +111,7 @@ config interface 'in_wg'
 	option private_key '<REDACTED>'
 
 config wireguard_in_wg 'wgcli_chirripo'
-	list allowed_ips '192.168.15.11/24'
+	list allowed_ips '192.168.15.11/32'
 	option public_key 'KE3sdUWs2FqPTh4ZdudseZU1zGz733IPQncXKAsNY1E='
 	option preshared_key '<REDACTED>'
 
