@@ -108,10 +108,10 @@ config interface 'in_wg'
 	option proto 'wireguard'
 	list addresses '192.168.15.1/24'
 	option listen_port '51820'
-	option private_key '<REDACTED>'
+	option private_key '<REDACTED:in_wg>'
 
 config wireguard_in_wg 'wgcli_chirripo'
 	list allowed_ips '192.168.15.11/32'
 	option public_key 'KE3sdUWs2FqPTh4ZdudseZU1zGz733IPQncXKAsNY1E='
-	option preshared_key '<REDACTED>'
+	option preshared_key '<REDACTED:wgcli_chirripo>'
 
