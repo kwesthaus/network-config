@@ -1,6 +1,6 @@
 
 config system
-	option hostname 'OpenWrt'
+	option hostname 'wifiap-belkin-rt3200'
 	option timezone 'UTC'
 	option ttylogin '0'
 	option log_size '64'
