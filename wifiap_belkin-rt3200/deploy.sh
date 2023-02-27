@@ -25,12 +25,12 @@ ssh $TARGET << 'EOF'
     #
     # replace secret placeholders
     #
-    # TRUSTED=`cat /root/wifi-trusted_password`
-    # sed -i -e "s/option key \'<REDACTED:trusted>\'/option key \'$TRUSTED\'/1" /etc/config/wireless
-    # GUEST=`cat /root/wifi-guest_password`
-    # sed -i -e "s/option key \'<REDACTED:guest>\'/option key \'$GUEST\'/1" /etc/config/wireless
-    # IOT=`cat /root/wifi-iot_password`
-    # sed -i -e "s/option key \'<REDACTED:iot>\'/option key \'$IOT\'/1" /etc/config/wireless
+    TRUSTED=`cat /root/wifi-trusted_password`
+    sed -i -e "s/option key \'<REDACTED:trusted>\'/option key \'$TRUSTED\'/1" /etc/config/wireless
+    GUEST=`cat /root/wifi-guest_password`
+    sed -i -e "s/option key \'<REDACTED:guest>\'/option key \'$GUEST\'/1" /etc/config/wireless
+    IOT=`cat /root/wifi-iot_password`
+    sed -i -e "s/option key \'<REDACTED:iot>\'/option key \'$IOT\'/1" /etc/config/wireless
 EOF
 
 echo ""

@@ -34,6 +34,11 @@ config bridge-vlan
 
 config bridge-vlan
 	option device 'br-all'
+	option vlan '12'
+	list ports 'wan:t'
+
+config bridge-vlan
+	option device 'br-all'
 	option vlan '13'
 	list ports 'lan3:u*'
 	list ports 'wan:t'
