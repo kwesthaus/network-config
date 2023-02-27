@@ -8,26 +8,62 @@ config interface 'loopback'
 config globals 'globals'
 	option ula_prefix 'fde8:7bc0:f42e::/48'
 
+
+## DSA HARDWARE SWITCH VLANS
+
 config device
-	option name 'br-lan'
+	option name 'br-all'
 	option type 'bridge'
 	list ports 'lan1'
 	list ports 'lan2'
 	list ports 'lan3'
 	list ports 'lan4'
+	list ports 'wan'
 
-config interface 'lan'
-	option device 'br-lan'
+config bridge-vlan
+	option device 'br-all'
+	option vlan '10'
+	list ports 'lan1:u*'
+	list ports 'wan:t'
+
+config bridge-vlan
+	option device 'br-all'
+	option vlan '11'
+	list ports 'lan2:u*'
+	list ports 'wan:t'
+
+config bridge-vlan
+	option device 'br-all'
+	option vlan '13'
+	list ports 'lan3:u*'
+	list ports 'wan:t'
+
+config bridge-vlan
+	option device 'br-all'
+	option vlan '14'
+	list ports 'lan4:u*'
+	list ports 'wan:t'
+
+
+## INTERFACES
+
+config interface 'in_trusted'
+	option proto 'none'
+	option device 'br-all.10'
+
+config interface 'in_guest'
+	option proto 'none'
+	option device 'br-all.11'
+
+config interface 'in_iot'
+	option proto 'none'
+	option device 'br-all.12'
+
+config interface 'in_infra'
+	option device 'br-all.14'
 	option proto 'static'
 	option ipaddr '192.168.14.32'
 	option netmask '255.255.255.0'
-	option ip6assign '60'
-
-config interface 'wan'
-	option device 'wan'
-	option proto 'dhcp'
-
-config interface 'wan6'
-	option device 'wan'
-	option proto 'dhcpv6'
+	option gateway '192.168.14.1'
+	option dns '192.168.14.1'
 
