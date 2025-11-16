@@ -38,6 +38,7 @@ config odhcpd 'odhcpd'
 	option leasefile '/tmp/hosts/odhcpd'
 	option leasetrigger '/usr/sbin/odhcpd-update'
 	option loglevel '4'
+	option piofolder '/tmp/odhcpd-piofolder'
 
 config dhcp 'dh_trusted'
 	option interface 'in_trusted'
